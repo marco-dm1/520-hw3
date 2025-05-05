@@ -77,7 +77,7 @@ public class ExpenseTrackerApp {
 
    // Add action listener to the "Undo Transaction" button
    view.undoTransactionListener(e -> {
-    System.err.println("clicked!");
+    controller.undoTransaction();
   });
     
   }

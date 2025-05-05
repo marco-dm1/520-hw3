@@ -32,6 +32,20 @@ public class ExpenseTrackerController {
     this.filter = filter;
   }
 
+  public void undoTransaction(){
+    // Removes the last added transaction.
+
+    List<Transaction> curTransactions = model.getTransactions();
+
+    if(curTransactions.size() == 0) return; // Don't do anything if there are no transactions
+
+    model.removeTransaction(curTransactions.get(curTransactions.size() - 1));
+
+    // Populate the change to the view by clearing any filter that may exist and by updating the table
+    setFilter(null);
+    applyFilter();
+  }
+
   public void refresh() {
     List<Transaction> transactions = model.getTransactions();
     view.refreshTable(transactions);
