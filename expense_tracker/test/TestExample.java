@@ -119,8 +119,19 @@ public class TestExample {
         double totalCost = getTotalCost();
         assertEquals(0.00, totalCost, 0.01);
     }
-    
 
+    // The test suite has an existing test case for removing a transaction contained in the transaction list. You
+    // need to modify this test suite to add a new test case trying to remove a transaction NOT contained in the
+    // transaction list.
+    @Test
+    public void testUndoTransaction() {
+        // Pre-condition: List of transactions is empty
+        assertEquals(0, model.getTransactions().size());
+
+        controller.undoTransaction(); // Attempt to undo a transaction (aka a transaction NOT contained in the transaction list). This shouldn't error
+
+        assertEquals(0, model.getTransactions().size()) // This should equal 0 as nothing has changed
+    }
         
     @Test
     public void testInvalidInputHandling() {
